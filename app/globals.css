@@ -1,26 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap");
 @import "tailwindcss";
 
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+	display: none; /* Chrome, Safari and Opera */
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: "Inter", var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+	--font-fragment-mono: "Fragment Mono", var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+
+* {
+	scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+		"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	overflow-y: hidden; /* Disable scrolling by default for splash screen */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #a8a8a8;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced backdrop blur support */
+.backdrop-blur-lg {
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+}
+
+/* Custom Animations */
+@keyframes slideUp {
+	from {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		transform: translateY(30px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes glow {
+	0%,
+	100% {
+		box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+	}
+	50% {
+		box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+	}
+}
+
+.animate-slide-up {
+	animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	opacity: 0;
+	transform: translateY(100%);
+}
+
+.animate-fade-in-up {
+	animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+	animation: glow 2s ease-in-out infinite;
+}
+
+/* Letter spacing for ultra-wide tracking */
+.tracking-ultra-wide {
+	letter-spacing: 0.5em;
+}
+
+/* Header text with adaptive contrast */
+.header-text-adaptive {
+	color: white;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), -1px -1px 2px rgba(255, 255, 255, 0.3), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.header-text-adaptive:hover {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+/* Gradient text effect */
+.gradient-text {
+	background: linear-gradient(135deg, #f59e0b, #d97706, #92400e);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-size: 200% 200%;
+	animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
 }

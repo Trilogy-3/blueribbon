@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Disallow crawling of any private or sensitive areas
+# (uncomment and modify as needed)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /api/
+
+# Allow crawling of images and media
+User-agent: Googlebot-Image
+Allow: /
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://blueribbonawards.com/sitemap.xml
+
+# Crawl delay (optional - uncomment if needed)
+# Crawl-delay: 1 
